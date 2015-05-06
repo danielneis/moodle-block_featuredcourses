@@ -23,11 +23,20 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['blockstring'] = 'Block string';
-$string['descconfig'] = 'Description of the config section';
-$string['descfoo'] = 'Config description';
-$string['headerconfig'] = 'Config section header';
-$string['labelfoo'] = 'Config label';
 $string['featuredcourses:addinstance'] = 'Add a Featured Courses block';
 $string['featuredcourses:myaddinstance'] = 'Add a Featured Courses block to my moodle';
 $string['pluginname'] = 'Featured Courses';
+$string['editlink'] = '<a href="{$a}">Click here to edit or add featured courses</a>';
+$string['editpagedesc'] = 'Editing the list of featured courses';
+$string['featuredcourses'] = 'Featured courses';
+$string['addfeaturedcourse'] = 'Add a new exiting course to featured list';
+$string['courseid'] = 'Course';
+$string['proximaturma'] = 'Next start date:';
+$string['cargahoraria'] = 'Course workload in hours:';
+$string['price'] = 'Price:';
+$string['linkprograma'] = 'Link to course summary page:';
+$string['linkinscrever'] = 'Link to course subscription page:';
+$string['linkimagem'] = 'Link to an image to be shown below course info:';
+$string['editpagetitle'] = 'Featured courses - editing';
+$string['featuredcourse'] = 'Featured course: {$a}';
+$string['doadd'] = 'Check to add new featured course';

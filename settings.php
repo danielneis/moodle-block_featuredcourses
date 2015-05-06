@@ -24,6 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+/*
 $settings->add(new admin_setting_heading('sampleheader',
                                          get_string('headerconfig', 'block_featuredcourses'),
                                          get_string('descconfig', 'block_featuredcourses')));
@@ -32,3 +33,4 @@ $settings->add(new admin_setting_configcheckbox('featuredcourses/foo',
                                                 get_string('labelfoo', 'block_featuredcourses'),
                                                 get_string('descfoo', 'block_featuredcourses'),
                                                 '0'));
+*/
