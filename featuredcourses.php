@@ -2,7 +2,8 @@
 
 require_once('../../config.php');
 require_once($CFG->libdir.'/coursecatlib.php');
-require_once($CFG->dirroot.'/blocks/featuredcourses/lib.php');
+require_once($CFG->dirroot.'/blocks/moodleblock.class.php');
+require_once($CFG->dirroot.'/blocks/featuredcourses/block_featuredcourses.php');
 require_once($CFG->dirroot.'/blocks/featuredcourses/featuredcourses_form.php');
 
 require_login();
@@ -17,7 +18,7 @@ $PAGE->set_context($system_context);
 
 $args = array(
     'availablecourses' => coursecat::get(0)->get_courses(array('recursive' => true)),
-    'featuredcourses' => featuredcourses_get_all()
+    'featuredcourses' => block_featuredcourses::get_featured_courses()
 );
 
 $editform = new featuredcourses_form(null, $args);
@@ -29,7 +30,7 @@ if ($editform->is_cancelled()) {
         try {
             $DB->insert_record('block_featuredcourses', $data->newfeatured);
         } catch (Exception $e) {
-            throw new moodle_exception();
+            throw $e;
         }
     }
 

@@ -55,17 +55,56 @@ class block_featuredcourses extends block_base {
             return $this->content;
         }
         if ($this->page->course->id == SITEID) {
-            $courses = $this->get_featured_courses();
-            foreach ($courses as $c) {
+            $courses = self::get_featured_courses();
+            require_once($CFG->libdir. '/coursecatlib.php');
+            $chelper = new coursecat_helper();
+            foreach ($courses as $course) {
+
+                $course = new course_in_list($course);
+
                 $this->content->text .= '<div class="container-fluid coursebox">';
-                $this->content->text .= '<h2>'.$c->fullname. '</h2>';
-                $this->content->text .= '<p>Próxima turma: '.$c->proximaturma. '</p>';
-                $this->content->text .= '<p>Carga horária: '.$c->cargahoraria. 'h</p>';
-                $this->content->text .= '<h2>R$ '.$c->valor. '</h2>';
-                $this->content->text .= '<a href="'.$c->linkprograma. '" class="btn">PROGRAMA</a>';
-                $this->content->text .= '<a href="'.$c->linkinscrever. '" class="btn">INSCREVER</a>';
-                $this->content->text .= '<img src="'.$c->linkimagem. '" class="courseimage"/>';
-                $this->content->text .= '</div>';
+
+                $content = '';
+
+                // course name
+                $coursename = $chelper->get_course_formatted_name($course);
+                $coursenamelink = html_writer::link(new moodle_url('/course/view.php', array('id' => $course->id)),
+                                                    $coursename, array('class' => $course->visible ? '' : 'dimmed'));
+                $content .= html_writer::tag('div', $coursenamelink, array('class' => 'coursename'));
+
+
+                // display course summary
+                if ($course->has_summary()) {
+                    $content .= html_writer::start_tag('div', array('class' => 'summary'));
+                    $content .= $chelper->get_course_formatted_summary($course,
+                            array('overflowdiv' => true, 'noclean' => true, 'para' => false));
+                    $content .= html_writer::end_tag('div'); // .summary
+                }
+
+                // display course overview files
+                $contentimages = $contentfiles = '';
+                foreach ($course->get_course_overviewfiles() as $file) {
+                    $isimage = $file->is_valid_image();
+                    $url = file_encode_url("$CFG->wwwroot/pluginfile.php",
+                            '/'. $file->get_contextid(). '/'. $file->get_component(). '/'.
+                            $file->get_filearea(). $file->get_filepath(). $file->get_filename(), !$isimage);
+                    if ($isimage) {
+                        $contentimages .= html_writer::tag('div',
+                                html_writer::empty_tag('img', array('src' => $url, 'style' => 'max-height: 150px')),
+                                array('class' => 'courseimage'));
+                    } else {
+                        $image = $this->output->pix_icon(file_file_icon($file, 24), $file->get_filename(), 'moodle');
+                        $filename = html_writer::tag('span', $image, array('class' => 'fp-icon')).
+                                html_writer::tag('span', $file->get_filename(), array('class' => 'fp-filename'));
+                        $contentfiles .= html_writer::tag('span',
+                                html_writer::link($url, $filename),
+                                array('class' => 'coursefile fp-filename-icon'));
+                    }
+                }
+                $content .= $contentimages. $contentfiles;
+
+
+                $this->content->text .= $content. '</div>';
             }
         }
 
@@ -89,15 +128,14 @@ class block_featuredcourses extends block_base {
         return true;
     }
 
-    private function get_featured_courses() {
+    static function get_featured_courses() {
         global $DB;
 
-        $sql = 'SELECT c.id, c.fullname,
-                       fc.proximaturma, fc. cargahoraria, fc.valor,
-                       fc.linkprograma, fc.linkinscrever, fc.linkimagem
+        $sql = 'SELECT c.id, c.shortname, c.fullname, fc.sortorder
                   FROM {block_featuredcourses} fc
                   JOIN {course} c
-                    ON (c.id = fc.courseid)';
+                    ON (c.id = fc.courseid)
+              ORDER BY sortorder';
         return $DB->get_records_sql($sql);
     }
 }
