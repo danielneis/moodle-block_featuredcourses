@@ -1,45 +1,27 @@
+Featured Courses - Moodle block
+===============================
+
 The following steps should get you up and running with
 this block template code.
 
 * DO NOT PANIC!
 
-* Unzip the archive and read this file
+* Put these files at moodle/blocks/featuredcourses/
 
-* Rename the featuredcourses/ folder to the name of your module (eg "widget").
-The module folder MUST be lower case. You should check the Moodle Plugins
-Database at https://moodle.org/plugins to make sure that
-your name is not already used by an other block. Registering the plugin
-name @ http://moodle.org/plugins will secure it for you.
+* Log in in your Moodle as Admin and got to admin/index
 
-* Edit all the files in this directory and its subdirectories and change
-all the instances of the string "featuredcourses" to your module name
-(eg "widget"). If you are using Linux, you can use the following command
-$ find . -type f -exec sed -i 's/featuredcourses/widget/g' {} \;
+* Follow the instructions to install the block
 
-* Rename the file lang/en/featuredcourses.php to lang/en/widget.php
-where "widget" is the name of your module. Also rename block_featuredcourses.php
-in the main directory to block_widget.php
+* This block is only visible on site front page
 
-* Place the widget folder into the /block folder of the moodle
-directory.
+* To select featured courses, add the block to front page,
+got to edit settings, click on the link on the settings screen.
 
-* Go to Settings > Site Administration > Development > XMLDB editor
-and modify the module's tables.
+* The order of the courses displayed by the block is defined
+by the "sortorder" field. It is an integer field that the records
+are ordered by.
 
-* Modify version.php and set the initial version of you module.
-
-* Visit Settings > Site Administration > Notifications, you should find
-the module's tables successfully created
-
-* Go to Site Administration > Plugins > Blocks > Manage blocks
-and you should find that this featuredcourses has been added to the list of
-installed modules.
-
-* You may now proceed to run your own code in an attempt to develop
-your module. You will probably want to modify block_newmodule.php
-and edit_form.php as a first step. Check db/access.php to add
-capabilities.
-
-We encourage you to share your code and experience - visit http://moodle.org
+* For each course, the block will show its name,
+summary and summary files.
 
 Good luck!
