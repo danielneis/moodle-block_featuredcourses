@@ -1,8 +1,15 @@
 Featured Courses - Moodle block
 ===============================
 
-The following steps should get you up and running with
-this block template code.
+With this block you can select a set of
+courses to be displayed on frontpage.
+
+For each course, the block will show it's name
+with a link to course page, it's
+summary and summary files.
+
+
+The following steps should get you up and running:
 
 * DO NOT PANIC!
 
@@ -20,8 +27,5 @@ got to edit settings, click on the link on the settings screen.
 * The order of the courses displayed by the block is defined
 by the "sortorder" field. It is an integer field that the records
 are ordered by.
-
-* For each course, the block will show its name,
-summary and summary files.
 
 Good luck!
