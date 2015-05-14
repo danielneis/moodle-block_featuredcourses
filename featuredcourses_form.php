@@ -13,6 +13,7 @@ class featuredcourses_form extends moodleform {
      * Form definition.
      */
     function definition() {
+        global $CFG;
 
         $mform = $this->_form;
         $availablecourses  = $this->_customdata['availablecourses']; // this contains the data of this form
@@ -34,6 +35,8 @@ class featuredcourses_form extends moodleform {
             $mform->addRule('featured['.$c->id.'][sortorder]', get_string('missingsortorder', 'block_featuredcourses'), 'required', null, 'client');
             $mform->setType('featured['.$c->id.'][sortorder]', PARAM_INT);
             $mform->setDefault('featured['.$c->id.'][sortorder]', $c->sortorder);
+
+            $mform->addElement('static', 'link', get_string('deletelink', 'block_featuredcourses', $CFG->wwwroot.'/blocks/featuredcourses/delete_featuredcourse.php?courseid='.$c->id));
 
         }
 

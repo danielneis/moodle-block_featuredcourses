@@ -138,4 +138,9 @@ class block_featuredcourses extends block_base {
               ORDER BY sortorder';
         return $DB->get_records_sql($sql);
     }
+
+    static function delete_featuredcourse($courseid) {
+        global $DB;
+        return $DB->delete_records('block_featuredcourses', array('courseid' => $courseid));
+    }
 }

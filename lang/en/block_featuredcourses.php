@@ -37,3 +37,6 @@ $string['doadd'] = 'Check to add new featured course';
 $string['missingcourseid'] = 'You must select a course.';
 $string['sortorder'] = 'Sort order';
 $string['missingsortorder'] = 'You must set a sort order.';
+$string['deletelink'] = '<a href="{$a}">Delete</a>';
+$string['delete_featuredcourse'] = 'Delete Featured Course';
+$string['confirmdelete'] = 'Are you sure you want to delete this course from the list of featured courses?';
