@@ -1,6 +1,7 @@
 {
     "name": "danielneis/moodle-block_featuredcourses",
     "description": "A block to show featured courses on frontpage",
+    "keywords": ["moodle"],
     "license": "GPLv3",
     "authors": [
         {
