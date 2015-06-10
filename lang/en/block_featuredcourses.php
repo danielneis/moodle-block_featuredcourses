@@ -23,8 +23,8 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['featuredcourses:addinstance'] = 'Add a Featured Courses block';
-$string['featuredcourses:myaddinstance'] = 'Add a Featured Courses block to my moodle';
+$string['featuredcourses:addinstance'] = 'Add a "Featured courses" block';
+$string['featuredcourses:myaddinstance'] = 'Add a "Featured courses" block to my moodle';
 $string['pluginname'] = 'Featured Courses';
 $string['editlink'] = '<a href="{$a}">Click here to edit or add featured courses</a>';
 $string['editpagedesc'] = 'Editing the list of featured courses';
@@ -38,5 +38,5 @@ $string['missingcourseid'] = 'You must select a course.';
 $string['sortorder'] = 'Sort order';
 $string['missingsortorder'] = 'You must set a sort order.';
 $string['deletelink'] = '<a href="{$a}">Delete</a>';
-$string['delete_featuredcourse'] = 'Delete Featured Course';
+$string['delete_featuredcourse'] = 'Delete featured course';
 $string['confirmdelete'] = 'Are you sure you want to delete this course from the list of featured courses?';
