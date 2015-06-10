@@ -29,7 +29,7 @@ $string['pluginname'] = 'Featured Courses';
 $string['editlink'] = '<a href="{$a}">Click here to edit or add featured courses</a>';
 $string['editpagedesc'] = 'Editing the list of featured courses';
 $string['featuredcourses'] = 'Featured courses';
-$string['addfeaturedcourse'] = 'Add a new existing course to featured list';
+$string['addfeaturedcourse'] = 'Add an existing course to featured list';
 $string['courseid'] = 'Course';
 $string['editpagetitle'] = 'Featured courses - editing';
 $string['featuredcourse'] = 'Featured course: {$a}';
