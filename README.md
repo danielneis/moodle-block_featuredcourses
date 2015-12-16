@@ -1,5 +1,5 @@
-Featured Courses - Moodle block
-===============================
+Featured Courses Block for Moodle
+---------------------------------
 
 With this block you can select a set of
 courses to be displayed on frontpage.
@@ -11,15 +11,18 @@ summary and summary files.
 https://moodle.org/plugins/block_featuredcourses
 
 Install
-=======
+-------
 
 * Put these files at moodle/blocks/featuredcourses/
-* Log in in your Moodle as Admin and go to admin/index
+ * You may use composer
+ * or git clone
+ * or download the latest version from https://github.com/danielneis/moodle-block_featuredcourses/archive/master.zip
+* Log in your Moodle as Admin and go to "Notifications" page
 * Follow the instructions to install the block
 * This block is only visible on site front page
 
 Usage
-=====
+-----
 
 * To select featured courses, add the block to front page,
 got to edit settings, click on the link on the settings screen.
