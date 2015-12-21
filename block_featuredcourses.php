@@ -26,12 +26,12 @@ defined('MOODLE_INTERNAL') || die();
 
 class block_featuredcourses extends block_base {
 
-    function init() {
+    public function init() {
         $this->title = get_string('pluginname', 'block_featuredcourses');
     }
 
-    function get_content() {
-        global $CFG, $OUTPUT;
+    public function get_content() {
+        global $CFG;
 
         if ($this->content !== null) {
             return $this->content;
@@ -48,7 +48,7 @@ class block_featuredcourses extends block_base {
         $this->content->footer = '';
         $this->content->text = '';
 
-        // user/index.php expect course context, so get one if page has module context.
+        // The user/index.php expect course context, so get one if page has module context.
         $currentcontext = $this->page->context->get_course_context(false);
 
         if (empty($currentcontext)) {
@@ -66,14 +66,11 @@ class block_featuredcourses extends block_base {
 
                 $content = '';
 
-                // course name
                 $coursename = $chelper->get_course_formatted_name($course);
                 $coursenamelink = html_writer::link(new moodle_url('/course/view.php', array('id' => $course->id)),
                                                     $coursename, array('class' => $course->visible ? '' : 'dimmed'));
                 $content .= html_writer::tag('div', $coursenamelink, array('class' => 'coursename'));
 
-
-                // display course summary
                 if ($course->has_summary()) {
                     $content .= html_writer::start_tag('div', array('class' => 'summary'));
                     $content .= $chelper->get_course_formatted_summary($course,
@@ -85,7 +82,7 @@ class block_featuredcourses extends block_base {
                 $contentimages = $contentfiles = '';
                 foreach ($course->get_course_overviewfiles() as $file) {
                     $isimage = $file->is_valid_image();
-                    $url = file_encode_url("$CFG->wwwroot/pluginfile.php",
+                    $url = file_encode_url("{$CFG->wwwroot}/pluginfile.php",
                             '/'. $file->get_contextid(). '/'. $file->get_component(). '/'.
                             $file->get_filearea(). $file->get_filepath(). $file->get_filename(), !$isimage);
                     if ($isimage) {
@@ -103,7 +100,6 @@ class block_featuredcourses extends block_base {
                 }
                 $content .= $contentimages. $contentfiles;
 
-
                 $this->content->text .= $content. '</div>';
             }
         }
@@ -111,24 +107,23 @@ class block_featuredcourses extends block_base {
         return $this->content;
     }
 
-    // my moodle can only have SITEID and it's redundant here, so take it away
     public function applicable_formats() {
-        return array('all' => false,
-                     'site' => true,
-                     'site-index' => true);
+        return array('all' => false, 'site' => true, 'site-index' => true);
     }
 
     public function instance_allow_multiple() {
           return false;
     }
 
-    function has_config() {return true;}
+    public function has_config() {
+        return true;
+    }
 
     public function cron() {
         return true;
     }
 
-    static function get_featured_courses() {
+    public static function get_featured_courses() {
         global $DB;
 
         $sql = 'SELECT c.id, c.shortname, c.fullname, fc.sortorder
@@ -139,7 +134,7 @@ class block_featuredcourses extends block_base {
         return $DB->get_records_sql($sql);
     }
 
-    static function delete_featuredcourse($courseid) {
+    public static function delete_featuredcourse($courseid) {
         global $DB;
         return $DB->delete_records('block_featuredcourses', array('courseid' => $courseid));
     }
