@@ -18,7 +18,7 @@
  * Version details
  *
  * @package    block_featuredcourses
- * @copyright  1999 onwards Martin Dougiamas (http://dougiamas.com)
+ * @copyright  Daniel Neis <danielneis@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

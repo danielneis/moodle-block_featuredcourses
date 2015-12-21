@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Newblock block caps.
+ * Featured coures block main class.
  *
  * @package    block_featuredcourses
  * @copyright  Daniel Neis <danielneis@gmail.com>

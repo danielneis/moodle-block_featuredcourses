@@ -22,14 +22,12 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU Public License
  */
 
-//It must be included from a Moodle page
-if (!defined('MOODLE_INTERNAL')) {
-    die('Direct access to this script is forbidden.');
-}
+defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->libdir.'/formslib.php');
 
 class block_featuredcourses_delete_featuredcourse_form extends moodleform {
+
     public function definition() {
         $mform =& $this->_form;
 

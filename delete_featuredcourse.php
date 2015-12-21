@@ -27,7 +27,7 @@ require_once($CFG->dirroot.'/blocks/featuredcourses/delete_featuredcourse_form.p
 
 $courseid = required_param('courseid', PARAM_INT);
 
-$PAGE->set_url('/blocks/featuredcourses/delete_featuredcourse.php', array('courseid'=>$courseid));
+$PAGE->set_url('/blocks/featuredcourses/delete_featuredcourse.php', array('courseid' => $courseid));
 $context = context_system::instance();
 $PAGE->set_context($context);
 
@@ -36,8 +36,7 @@ require_login();
 require_capability('block/featuredcourses:addinstance', $context);
 
 $mform = new block_featuredcourses_delete_featuredcourse_form();
-$newformdata = array('courseid'=>$courseid,
-                     'confirmdelete'=>'1');
+$newformdata = array('courseid' => $courseid, 'confirmdelete' => '1');
 $mform->set_data($newformdata);
 $formdata = $mform->get_data();
 
