@@ -71,12 +71,12 @@ if ($editform->is_cancelled()) {
 $site = get_site();
 
 $PAGE->set_title(get_string('editpagetitle', 'block_featuredcourses'));
-$PAGE->set_heading($site->fullname . ' - ' . 
-                   get_string('pluginname', 'block_featuredcourses'));
+$PAGE->set_heading($site->fullname . ' - ' .  get_string('pluginname', 'block_featuredcourses'));
 
-echo $OUTPUT->header();
-echo $OUTPUT->heading(get_string('editpagedesc', 'block_featuredcourses'));
+echo $OUTPUT->header(),
 
-$editform->display();
+     $OUTPUT->heading(get_string('editpagedesc', 'block_featuredcourses')),
 
-echo $OUTPUT->footer();
+     $editform->render(),
+
+     $OUTPUT->footer();

@@ -75,10 +75,10 @@ class block_featuredcourses extends block_base {
                     $content .= html_writer::start_tag('div', array('class' => 'summary'));
                     $content .= $chelper->get_course_formatted_summary($course,
                             array('overflowdiv' => true, 'noclean' => true, 'para' => false));
-                    $content .= html_writer::end_tag('div'); // .summary
+                    $content .= html_writer::end_tag('div');
                 }
 
-                // display course overview files
+                // Display course overview files.
                 $contentimages = $contentfiles = '';
                 foreach ($course->get_course_overviewfiles() as $file) {
                     $isimage = $file->is_valid_image();

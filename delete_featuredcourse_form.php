@@ -31,7 +31,6 @@ class block_featuredcourses_delete_featuredcourse_form extends moodleform {
     public function definition() {
         $mform =& $this->_form;
 
-        // hidden elements
         $mform->addElement('hidden', 'id');
         $mform->setType('id', PARAM_INT);
         $mform->addElement('hidden', 'courseid');
