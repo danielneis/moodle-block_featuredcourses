@@ -116,7 +116,7 @@ class block_featuredcourses extends block_base {
     }
 
     public function has_config() {
-        return true;
+        return false;
     }
 
     public function cron() {
