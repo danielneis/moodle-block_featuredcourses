@@ -108,7 +108,7 @@ class block_featuredcourses extends block_base {
     }
 
     public function applicable_formats() {
-        return array('all' => false, 'site' => true, 'site-index' => true);
+        return array('all' => true);
     }
 
     public function instance_allow_multiple() {
